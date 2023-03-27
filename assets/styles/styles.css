@@ -1,0 +1,180 @@
+*{    
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.imgLogo{
+    width: 180px;
+    margin-left: 100px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between; 
+    padding: 20px; 
+    font-size: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after {
+  content: ">";
+  font-size: 60px;
+  color: white;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 60px;
+  color: white;
+}
+
+.carouselItem{
+    text-decoration: none;  
+    color: white;
+}
+
+.carousel{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(243, 30, 108);
+} 
+
+.checkbox-search{
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+ 
+.searchButton {
+  background-color: rgb(243, 30, 108);
+  color: white;
+  width: 50px;
+}
+
+.form-control{
+  width: 500px; 
+}
+
+.searchAndIcon{
+  display: flex;
+  justify-content: flex-end; ; 
+}
+
+.cardsArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  margin: -50px 0 -50px 0; 
+  flex-grow: 1;
+}
+
+footer{
+  background-color: rgb(243, 30, 108);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  color: white;
+}
+
+.logosLink{
+  text-decoration: none;
+  color: white; 
+}
+
+.bi-instagram, .bi-facebook, .bi-whatsapp{
+  font-size: 30px;
+  padding: 15px;
+}
+
+.contactForm{ 
+  margin: 50px 0 50px 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-primary{
+  background-color: rgb(243, 30, 108);
+}
+
+th, td{
+  border: solid 2px grey;
+  padding: 5px;
+  font-size: 10px;
+  height: 20px;
+} 
+
+.table-header{
+  background-color: grey;
+  background-color: rgb(243, 30, 108);
+  color: rgb(243, 30, 108);
+  font-size: 10px;
+  height: 30px;
+}
+
+.detailsCard{
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  .imgLogo{
+    width: 70px; 
+  } 
+  .cardsArea{
+    flex-direction: column-reverse;
+  }
+  .nav{
+    display: none;
+  }
+  .checkbox-search{
+    flex-wrap: wrap; 
+  }
+  .searchAndIcon{
+    width: 100%; 
+  }
+  .carousel{
+    width: 100%;
+  }
+  .form-control{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 700px){
+  .cardsArea{
+    flex-direction: column-reverse;
+  }
+}
+
+.nav-item{
+  background-color: rgb(243, 30, 108);
+}
+
+.nav-link{
+  color: white;
+}
+
+.nav-link:hover{
+  background-color: white;
+  color: rgb(243, 30, 108);
+}
+
+.carouselItem:hover{
+  color: rgb(19, 16, 16);
+}
+
+.btn:hover{
+  background-color: black;
+}
