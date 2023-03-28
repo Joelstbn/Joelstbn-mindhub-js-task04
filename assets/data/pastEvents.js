@@ -12,40 +12,27 @@ const contenedorChecks = document.getElementById("checkContainer")
 input.addEventListener('input',superFiltro)
 contenedorChecks.addEventListener('change',superFiltro)
    
-async function getEvents() {
-    try {
-        const response = await fetch(API_URL);
-        const eventsFromAPI = await response.json();
+async function getEvents() { 
+
+        await fetch(API_URL)
+        .then(response => response.json())
+        .then(json => {
+            currentDate = json.currentDate
+            pastEvents.push(...json.events.filter(dates => dates.date < currentDate))
+        })
         
-        for (const event of eventsFromAPI.events) {
-            dataEvents.push(event)
-        }       
-
-        currentDate = eventsFromAPI.currentDate
-         
-         let pastEvents = dataEvents.filter(dataEvents => dataEvents.date < currentDate)
-
-        //ME TRABÉ ACÁ, SE ME ROMPEN LOS FILTROS
-
-        console.log(dataEvents);
         console.log(currentDate);
-        console.log(pastEvents);
+        console.log(pastEvents); 
         
         // Llamo funciones
         pintarTarjetas(pastEvents)
-        crearCheckboxes(pastEvents)
-
-    }
-    catch (error) {
-        console.log("ERROOOOR");
-    }
+        crearCheckboxes(pastEvents) 
  
-}
+    }
   
 // Llamado de funciones
-getEvents() 
-  
-// Funciones
+getEvents()  
+
 function superFiltro(){
     let arrayFiltrado1 = filtrarPorTexto(pastEvents, input.value)
     let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
@@ -78,7 +65,7 @@ function crearCheckboxes(arrayInfo){
   
 function pintarTarjetas(arrayDatos) {
       if(arrayDatos.length == 0){
-          contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No hay coincidencias en la búsqueda</h3>"
+          contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No matches found</h3>"
           return
       }
       let tarjetas = ``

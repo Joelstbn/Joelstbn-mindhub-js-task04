@@ -74,7 +74,7 @@ function crearCheckboxes(arrayInfo){
 
 function pintarTarjetas(arrayDatos) {
     if(arrayDatos.length == 0){
-        contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No hay coincidencias en la búsqueda</h3>"
+        contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No matches found</h3>"
         return
     }
     let tarjetas = ``
@@ -103,17 +103,14 @@ function filtrarPorTexto(arrayDatos, texto) {
 }
 
 function filtrarPorCategoria(arrayInfo){
-    let checkboxes = document.querySelectorAll("input[type='checkbox']")
-    console.log(checkboxes);
-    let arrayChecks = Array.from(checkboxes)
-    console.log(arrayChecks);
+    let checkboxes = document.querySelectorAll("input[type='checkbox']") 
+    let arrayChecks = Array.from(checkboxes) 
     let checksChecked = arrayChecks.filter(check => check.checked)
-    console.log(checksChecked);
+    
     if (checksChecked.length == 0){
         return arrayInfo
     }
     let checkValues = checksChecked.map(check => check.value)
-    console.log(checkValues);
     let arrayFiltrado = arrayInfo.filter(elemento => checkValues.includes(elemento.category)) 
     console.log(arrayFiltrado); 
     return arrayFiltrado

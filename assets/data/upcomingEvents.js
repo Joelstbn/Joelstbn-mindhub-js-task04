@@ -15,36 +15,20 @@ contenedorChecks.addEventListener('change',superFiltro)
 // Función asíncrona que obtiene la data de la API
 
 async function getEvents() {
-    try {
-        const response = await fetch(API_URL);
-        const eventsFromAPI = await response.json();
-        
-        for (const event of eventsFromAPI.events) {
-            dataEvents.push(event)
-        }       
+    await fetch(API_URL)
+    .then(response => response.json())
+    .then(json => {
+        currentDate = json.currentDate
+        upcomingEvents.push(...json.events.filter(dates => dates.date >= currentDate))
+    })
+    
+    console.log(currentDate);
+    console.log(upcomingEvents); 
+    
+    // Llamo funciones
+    pintarTarjetas(upcomingEvents)
+    crearCheckboxes(upcomingEvents) 
 
-        currentDate = eventsFromAPI.currentDate
-        
-        console.log(dataEvents);
-        console.log(currentDate);
- 
-        let upcomingEvents = dataEvents.filter(dataEvents => dataEvents.date >= currentDate)
-
-        //ME TRABÉ ACÁ, SE ME ROMPEN LOS FILTROS
-
-        console.log(dataEvents);
-        console.log(currentDate);
-        console.log(upcomingEvents);
-        
-        // Llamo funciones
-        pintarTarjetas(upcomingEvents)
-        crearCheckboxes(upcomingEvents)
-
-    }
-    catch (error) {
-        console.log("ERROOOOR");
-    }
- 
 }
 
   
@@ -86,7 +70,7 @@ function crearCheckboxes(arrayInfo){
   
 function pintarTarjetas(arrayDatos) {
       if(arrayDatos.length == 0){
-          contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No hay coincidencias en la búsqueda</h3>"
+          contenedor.innerHTML = "<h3 class='m4 fw-bolder'>No matches found</h3>"
           return
       }
       let tarjetas = ``
