@@ -51,7 +51,7 @@ async function getEvents() {
 // Llamado de funciones
 
 getEvents() 
-  
+console.log(upcomingEvents);
   
 // Funciones
 function superFiltro(){

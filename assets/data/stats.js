@@ -72,9 +72,9 @@ function printStatistics(percentages, events) {
 
     tableStats.innerHTML = `
 
-    <td class="highestpercentage"> ${events[indexMax].name} (${max}%) </td>
-    <td class="lowestCap">${events[indexMin].name} (${min}%) </td>
-    <td class="largerCap">${events[indexCapacity].name} (${capacityMax}) </td>
+    <td> ${events[indexMax].name} (${max}%) </td>
+    <td>${events[indexMin].name} (${min}%) </td>
+    <td>${events[indexCapacity].name} (${capacityMax}) </td>
         
      `
 }
@@ -96,39 +96,39 @@ function upcomingStatistics(array) {
     let revenueConcert = 0
     let revenueMuseum = 0
 
-    let percentageFood = []
-    let percentageBooks = []
-    let percentageParty = []
-    let percentageRace = []
-    let percentageConcert = []
-    let percentageMuseum = []
+    let attendanceFood = []
+    let attendanceBooks = []
+    let attendanceParty = []
+    let attendanceRace = []
+    let attendanceConcert = []
+    let attendanceMuseum = []
 
     for (let i = 0; i < array.length; i++) {
 
         switch (array[i].category) {
             case "Food": 
                 revenueFood += array[i].price * array[i].estimate 
-                percentageFood.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceFood.push(array[i].estimate * 100 / array[i].capacity)
                 break;
             case "Books":
                 revenueBooks += array[i].price * array[i].estimate 
-                percentageBooks.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceBooks.push(array[i].estimate * 100 / array[i].capacity)
                 break;
             case "Party":
                 revenueParty += array[i].price * array[i].estimate 
-                percentageParty.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceParty.push(array[i].estimate * 100 / array[i].capacity)
                 break;
             case "Race":
                 revenueRace += array[i].price * array[i].estimate 
-                percentageRace.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceRace.push(array[i].estimate * 100 / array[i].capacity)
                 break;
             case "Concert":
                 revenueConcert += array[i].price * array[i].estimate 
-                percentageConcert.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceConcert.push(array[i].estimate * 100 / array[i].capacity)
                 break;
             case "Museum":
                 revenueMuseum += array[i].price * array[i].estimate 
-                percentageMuseum.push(array[i].estimate * 100 / array[i].capacity)
+                attendanceMuseum.push(array[i].estimate * 100 / array[i].capacity)
                 break;
 
         }
@@ -136,12 +136,12 @@ function upcomingStatistics(array) {
 
     let revenues = [revenueFood, revenueBooks, revenueParty, revenueRace, revenueConcert, revenueMuseum]
 
-    let percentageEvent = [promedioAttendance(percentageFood),
-    promedioAttendance(percentageBooks),
-    promedioAttendance(percentageParty),
-    promedioAttendance(percentageRace),
-    promedioAttendance(percentageConcert),
-    promedioAttendance(percentageMuseum)]
+    let attendanceEvent = [promedioAttendance(attendanceFood),
+    promedioAttendance(attendanceBooks),
+    promedioAttendance(attendanceParty),
+    promedioAttendance(attendanceRace),
+    promedioAttendance(attendanceConcert),
+    promedioAttendance(attendanceMuseum)]
 
     let table = document.getElementById("upcomingEventsStatistics")
 
@@ -151,7 +151,7 @@ function upcomingStatistics(array) {
         <tr>
         <td>${categories[i]}</td>
         <td>$${revenues[i]}</td>
-        <td>${percentageEvent[i]}%</td>
+        <td>${attendanceEvent[i]}%</td>
         </tr>`
         totalArray.push(html)
     }
@@ -183,39 +183,39 @@ function pastStatistics(array) {
     let revenueConcert = 0
     let revenueMuseum = 0
 
-    let percentageFood = []
-    let percentageBooks = []
-    let percentageParty = []
-    let percentageRace = []
-    let percentageConcert = []
-    let percentageMuseum = []
+    let attendanceFood = []
+    let attendanceBooks = []
+    let attendanceParty = []
+    let attendanceRace = []
+    let attendanceConcert = []
+    let attendanceMuseum = []
 
     for (let i = 0; i < array.length; i++) {
 
         switch (array[i].category) {
             case "Food": 
                 revenueFood += array[i].price * array[i].assistance 
-                percentageFood.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceFood.push(array[i].assistance * 100 / array[i].capacity)
                 break;
             case "Books":
                 revenueBooks += array[i].price * array[i].assistance
-                percentageBooks.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceBooks.push(array[i].assistance * 100 / array[i].capacity)
                 break;
             case "Party":
                 revenueParty += array[i].price * array[i].assistance
-                percentageParty.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceParty.push(array[i].assistance * 100 / array[i].capacity)
                 break;
             case "Race":
                 revenueRace += array[i].price * array[i].assistance 
-                percentageRace.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceRace.push(array[i].assistance * 100 / array[i].capacity)
                 break;
             case "Concert":
                 revenueConcert += array[i].price * array[i].assistance 
-                percentageConcert.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceConcert.push(array[i].assistance * 100 / array[i].capacity)
                 break;
             case "Museum":
                 revenueMuseum += array[i].price * array[i].assistance 
-                percentageMuseum.push(array[i].assistance * 100 / array[i].capacity)
+                attendanceMuseum.push(array[i].assistance * 100 / array[i].capacity)
                 break;
 
         }
@@ -223,12 +223,12 @@ function pastStatistics(array) {
 
     let revenues = [revenueFood, revenueBooks, revenueParty, revenueRace, revenueConcert, revenueMuseum]
 
-    let percentageEvent = [promedioAttendance(percentageFood),
-    promedioAttendance(percentageBooks),
-    promedioAttendance(percentageParty),
-    promedioAttendance(percentageRace),
-    promedioAttendance(percentageConcert),
-    promedioAttendance(percentageMuseum)]
+    let attendanceEvent = [promedioAttendance(attendanceFood),
+    promedioAttendance(attendanceBooks),
+    promedioAttendance(attendanceParty),
+    promedioAttendance(attendanceRace),
+    promedioAttendance(attendanceConcert),
+    promedioAttendance(attendanceMuseum)]
 
     let table = document.getElementById("pastEventsStatistics")
 
@@ -238,7 +238,7 @@ function pastStatistics(array) {
         <tr>
         <td>${categories[i]}</td>
         <td>$${revenues[i]}</td>
-        <td>${percentageEvent[i]}%</td>
+        <td>${attendanceEvent[i]}%</td>
         </tr>`
         totalArray.push(html)
     }

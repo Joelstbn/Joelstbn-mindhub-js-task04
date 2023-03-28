@@ -1,6 +1,6 @@
 let dataEvents = []
 let currentDate = ""
-let upcomingEvents = []
+let pastEvents = []
 
 const API_URL = "https://mindhub-xj03.onrender.com/api/amazing" 
 
@@ -47,7 +47,7 @@ getEvents()
   
 // Funciones
 function superFiltro(){
-    let arrayFiltrado1 = filtrarPorTexto(events, input.value)
+    let arrayFiltrado1 = filtrarPorTexto(pastEvents, input.value)
     let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
     pintarTarjetas(arrayFiltrado2)
 }

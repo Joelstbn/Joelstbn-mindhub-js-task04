@@ -31,14 +31,15 @@ async function getEvents() {
 
     }
     catch (error) {
-        console.log(error.message)
+        console.log("ERROOOOR");
     }
  
 }
 
 // Llamado de funciones
-
 getEvents()
+
+console.log(dataEvents)
 
 // Funciones
 function superFiltro(){
